@@ -1,0 +1,95 @@
+//Sass file
+
+//importing _config.scss
+@import "config";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $light-color; //calling variable to set color
+  font-family: $font-stack; //calling variable to font stuff
+  line-height: 1.6;
+}
+
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
+
+.showcase {
+  // background-color: $primary-color;
+  // color: set-text-color(
+  //   $primary-color
+  // ); //calling _confif function to check background
+  //instead we can use one line using mixing
+  @include set-background($primary-color);
+
+  height: 600px;
+
+  //navbar is inside showcase so we nest them
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    //to operate in the navbaer ul element
+    ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    li {
+      padding: 15px;
+    }
+    a {
+      color: set-text-color(
+        $primary-color
+      ); //calling _confif function to check background
+    }
+    //hover color to the navbar links
+    a:hover {
+      color: $secondary-color;
+    }
+  }
+
+  // To refer to the parent class we can put &
+  //.showcase-content === .&-content
+  &-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+
+    //we want th image is 50% in every section
+    img {
+      width: 50%;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+
+    // p {
+    //   margin: 20px 0;
+    // }
+    //we want to change a element's class to apply differents styles in _utillities.scss
+  }
+}
+
+@import "utillities";
+@import "buttons";
+//importing media for responsive
+@import "mobile";
+/*
+To compile scss we can use two options:
+1. install 'live sass compiler' to VSCode
+2. install npm packet: 'npm i -g sass'
+    to see: 'sass --watch scss/style.scss css/style.css'
+*/

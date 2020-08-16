@@ -1,0 +1,29 @@
+//File to config
+//Color variable
+$light-color: #313030;
+//font variable
+$font-stack: Arial, Helvetica, sans-serif;
+$primary-color: #4b71ad;
+// $primary-color: #e0ffff;
+$secondary-color: #ff8700;
+
+//Functions and conditionals
+
+/*
+We want a functions that look ath the lightness of the background 
+color and then return a specofoc text color based on that
+*/
+@function set-text-color($color) {
+  //check the lightness
+  @if (lightness($color) > 70) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+//Set background & text color
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+}
